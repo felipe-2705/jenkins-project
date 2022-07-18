@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    tools {
+        maven maven
+        jdk   JAVA
+    }
+    stages {
+        stage('Initialize'){
+            steps{
+                echo PATH = ${M2_HOME}bin${PATH}
+                echo M2_HOME = optmaven
+            }
+        }
+        stage('Build') {
+            steps {
+                dir(varlibjenkinsworkspacemaven-testjenkins-project) {
+                    sh 'pwd'
+                    sh 'ls -lha'
+                    sh 'mvn clean test'
+                }
+            }
+        }
+     }
+}
