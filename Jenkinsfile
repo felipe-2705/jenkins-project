@@ -13,11 +13,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("var/lib/jenkins/workspace/maven-test/jenkins-project/") {
                     sh 'pwd'
                     sh 'ls -lha'
                     sh 'mvn clean test'
-                }
             }
         }
      }
